@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from 'react';
 import styled from 'styled-components'
 import theme from '../global/theme';
 import { Container, Input } from "@nextui-org/react";
@@ -8,7 +9,8 @@ import { execFile } from 'child_process';
 import SearchIcon from '@mui/icons-material/Search';
 import { Breakpoint } from 'react-socks';
 import MenuIcon from '@mui/icons-material/Menu';
-
+import Button from '@mui/material/Button';
+import Drawer from '@mui/material/Drawer';
 interface Props {
   children: React.ReactNode;
   tabs: {
@@ -54,6 +56,32 @@ const Tab = styled.div`
     cursor: pointer;
   }
 `
+
+const DrawerTab = styled.div`
+    transition : 0.3;
+    padding : 10px 20px;
+    padding-right : 40px;
+    min-width : 70vw;
+    color : ${theme.linkHighlight};
+    background-color : white;
+    border-bottom : 1px solid gray;
+    :hover {
+       background-color : ${theme.linkHighlight};
+      color : white;
+      cursor: pointer;
+    }
+`
+
+const StaticDrawerTab = styled.div`
+    padding : 10px 20px;
+    min-width : 70vwh;
+    padding-right : 40px;
+    color : ${theme.linkHighlight};
+    background-color : ${theme.linkHighlight};
+    color : white;
+    border-bottom : 1px solid gray;
+`
+
 const FlexContainer = styled.div`
   display : flex;
 `
@@ -89,9 +117,10 @@ export default function Header({ children, tabs }: Props) {
   const handleTabClick = (tab: { link: string }) => {
     navigate(tab.link);
   }
-  const handleHamburgerClick = () => {
-    
+  const toggleDrawer = () => {
+    setIsDrawerOpen(!isDrawerOpen);
   }
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   return (
     <>
       <TopSocialBar></TopSocialBar>
@@ -104,7 +133,7 @@ export default function Header({ children, tabs }: Props) {
       </MiddleBar>
       <BottomBar>
         <Container>
-          <Breakpoint medium up>
+          <Breakpoint customQuery='(min-width:550px)'>
             <FlexContainer>
               <TabLine>
                 {
@@ -123,10 +152,29 @@ export default function Header({ children, tabs }: Props) {
               </Input>
             </FlexContainer>
           </Breakpoint>
-          <Breakpoint small down>
-            <HamburgerIcon onClick={handleHamburgerClick}>
+          <Breakpoint customQuery="(max-width:549px)">
+            <HamburgerIcon onClick={toggleDrawer}>
               <MenuIcon sx={{ color: 'white' }} />
             </HamburgerIcon>
+            <Drawer anchor='right' open={isDrawerOpen} onClose={toggleDrawer}>
+              <StaticDrawerTab>
+                Pagini
+              </StaticDrawerTab>
+              {
+                tabs.map((tab) => (
+                  <DrawerTab onClick={handleTabClick.bind(null, tab)}>
+                    <span>
+                      {
+                        tab.text
+                      }
+                    </span>
+                  </DrawerTab>
+                ))
+              }
+              <StaticDrawerTab>
+                Articole
+              </StaticDrawerTab>
+            </Drawer>
           </Breakpoint>
         </Container>
       </BottomBar>
