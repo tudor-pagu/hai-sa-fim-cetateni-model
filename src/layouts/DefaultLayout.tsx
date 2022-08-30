@@ -1,6 +1,6 @@
 import React from 'react'
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Header from '../page-chunks/Header';
+import Footer from '../page-chunks/Footer';
 
 interface Props {
   children?: React.ReactNode
@@ -9,7 +9,9 @@ interface Props {
 export default function DefaultValue({children}: Props) {
   return (
     <>
-      <Header/>
+      <Header tabs={[{text:'Acasa',link:'acasa'}, {text:'Despre noi', link:'despre-noi'}]}>
+        Hai Sa Fim Cetateni <span>Model</span>
+      </Header>
       {
         children
       }

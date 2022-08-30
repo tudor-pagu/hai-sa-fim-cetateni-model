@@ -4,12 +4,16 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import RouteSwitch from './RouteSwitch';
 
+import { NextUIProvider } from '@nextui-org/react';
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <RouteSwitch />
+    <NextUIProvider>
+      <RouteSwitch />
+    </NextUIProvider>
   </React.StrictMode>
 );
 
