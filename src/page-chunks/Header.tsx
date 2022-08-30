@@ -5,6 +5,10 @@ import { Container, Input } from "@nextui-org/react";
 import { Link, useNavigate } from 'react-router-dom';
 import UnstyledLink from '../components/UnstyledLink';
 import { execFile } from 'child_process';
+import SearchIcon from '@mui/icons-material/Search';
+import { Breakpoint } from 'react-socks';
+import MenuIcon from '@mui/icons-material/Menu';
+
 interface Props {
   children: React.ReactNode;
   tabs: {
@@ -27,7 +31,7 @@ const MiddleBar = styled.div`
   display : flex;
   align-items : center;
 
-  @media only screen and (max-width: 650px) {
+  @media only screen and (max-width: 767px) {
     font-size: 1.2rem;
     min-height : 50px;
   }
@@ -57,6 +61,17 @@ const FlexContainer = styled.div`
 const TabLine = styled.div`
   display : flex;
 `
+
+const HamburgerIcon = styled.div`
+  width:30px;
+  height:30px;
+  background-color: ${theme.linkHighlight};
+  display : flex;
+  justify-content : center;
+  align-items : center;
+  cursor : pointer;
+`
+
 function getTabStyle(index: number, tabs: {
   text: string;
   link: string;
@@ -74,6 +89,9 @@ export default function Header({ children, tabs }: Props) {
   const handleTabClick = (tab: { link: string }) => {
     navigate(tab.link);
   }
+  const handleHamburgerClick = () => {
+    
+  }
   return (
     <>
       <TopSocialBar></TopSocialBar>
@@ -86,23 +104,30 @@ export default function Header({ children, tabs }: Props) {
       </MiddleBar>
       <BottomBar>
         <Container>
-          <FlexContainer>
-            <TabLine>
-              {
-                tabs.map((tab, index) => (
-                  <Tab onClick={handleTabClick.bind(null, tab)}>
-                    <span style={getTabStyle(index, tabs)}>
-                      {
-                        tab.text
-                      }
-                    </span>
-                  </Tab>
-                ))
-              }
-            </TabLine>
-            <Input placeholder='Cauta...' contentRight={}>
-            </Input>
-          </FlexContainer>
+          <Breakpoint medium up>
+            <FlexContainer>
+              <TabLine>
+                {
+                  tabs.map((tab, index) => (
+                    <Tab onClick={handleTabClick.bind(null, tab)}>
+                      <span style={getTabStyle(index, tabs)}>
+                        {
+                          tab.text
+                        }
+                      </span>
+                    </Tab>
+                  ))
+                }
+              </TabLine>
+              <Input placeholder='Cauta...' contentRight={<SearchIcon sx={{ color: '#003C54' }} />}>
+              </Input>
+            </FlexContainer>
+          </Breakpoint>
+          <Breakpoint small down>
+            <HamburgerIcon onClick={handleHamburgerClick}>
+              <MenuIcon sx={{ color: 'white' }} />
+            </HamburgerIcon>
+          </Breakpoint>
         </Container>
       </BottomBar>
     </>

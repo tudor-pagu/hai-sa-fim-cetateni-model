@@ -4,6 +4,7 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import RouteSwitch from './RouteSwitch';
 
+import { BreakpointProvider } from 'react-socks';
 import { NextUIProvider } from '@nextui-org/react';
 
 const root = ReactDOM.createRoot(
@@ -12,7 +13,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <NextUIProvider>
-      <RouteSwitch />
+      <BreakpointProvider>
+        <RouteSwitch />
+      </BreakpointProvider>
     </NextUIProvider>
   </React.StrictMode>
 );
