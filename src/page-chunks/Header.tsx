@@ -12,6 +12,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Button from '@mui/material/Button';
 import Drawer from '@mui/material/Drawer';
 import { Collapse, Text } from "@nextui-org/react";
+import ListCategory from '../components/ListCategory';
+import ListItem from '../components/ListItem';
 
 interface Props {
   children: React.ReactNode;
@@ -102,6 +104,11 @@ const HamburgerIcon = styled.div`
   cursor : pointer;
 `
 
+const SidebarContainer = styled.div`
+  padding : 40px 10px;
+  min-width : 50vw;
+`
+
 function getTabStyle(index: number, tabs: {
   text: string;
   link: string;
@@ -159,16 +166,20 @@ export default function Header({ children, tabs }: Props) {
               <MenuIcon sx={{ color: 'white' }} />
             </HamburgerIcon>
             <Drawer anchor='right' open={isDrawerOpen} onClose={toggleDrawer}>
-  
+
               <Collapse.Group accordion={false}>
                 {
-                  tabs.map((tab) => (
-                    <Collapse title='Option A' style={{fontSize:'1rem'}}>
-                        <Text>
-                          hi
-                        </Text>
-                    </Collapse>
-                  ))
+                  <SidebarContainer>
+
+                    <ListCategory open text='pagini'>
+                      {
+                        tabs.map((tab) => (
+                          <ListItem text={tab.text} link={tab.link} />
+                        ))
+                      }
+                    </ListCategory>
+                  </SidebarContainer>
+
                 }
               </Collapse.Group>
             </Drawer>

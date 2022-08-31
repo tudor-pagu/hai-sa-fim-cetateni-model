@@ -51,7 +51,7 @@ export default function ListCategory({ text, children, open }: Props) {
         < StyleDiv >
             <InnerText onClick={handleClick}>
                 {text}
-                <IconButton>
+                <IconButton style={{padding:'0px'}}>
                     <ExpandMoreIcon className={"icon " + (isOpen ? "open" : "")} style={{ color: theme.sidebarTextGray }} />
                 </IconButton>
             </InnerText>
