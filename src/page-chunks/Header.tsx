@@ -109,6 +109,9 @@ const SidebarContainer = styled.div`
   min-width : 50vw;
 `
 
+const FullContainer = styled.div`
+`
+
 function getTabStyle(index: number, tabs: {
   text: string;
   link: string;
@@ -132,60 +135,62 @@ export default function Header({ children, tabs }: Props) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   return (
     <>
-      <TopSocialBar></TopSocialBar>
-      <MiddleBar>
-        <Container>
-          <UnstyledLink to=''>
-            {children}
-          </UnstyledLink>
-        </Container>
-      </MiddleBar>
-      <BottomBar>
-        <Container>
-          <Breakpoint customQuery='(min-width:550px)'>
-            <FlexContainer>
-              <TabLine>
-                {
-                  tabs.map((tab, index) => (
-                    <Tab onClick={handleTabClick.bind(null, tab)}>
-                      <span style={getTabStyle(index, tabs)}>
+      <FullContainer>
+        <TopSocialBar></TopSocialBar>
+        <MiddleBar>
+          <Container>
+            <UnstyledLink to='' style={{fontFamily:theme.logoFont}}>
+              {children}
+            </UnstyledLink>
+          </Container>
+        </MiddleBar>
+        <BottomBar>
+          <Container>
+            <Breakpoint customQuery='(min-width:550px)'>
+              <FlexContainer>
+                <TabLine>
+                  {
+                    tabs.map((tab, index) => (
+                      <Tab onClick={handleTabClick.bind(null, tab)}>
+                        <span style={getTabStyle(index, tabs)}>
+                          {
+                            tab.text
+                          }
+                        </span>
+                      </Tab>
+                    ))
+                  }
+                </TabLine>
+                <Input placeholder='Cauta...' contentRight={<SearchIcon sx={{ color: '#003C54' }} />}>
+                </Input>
+              </FlexContainer>
+            </Breakpoint>
+            <Breakpoint customQuery="(max-width:549px)">
+              <HamburgerIcon onClick={toggleDrawer}>
+                <MenuIcon sx={{ color: 'white' }} />
+              </HamburgerIcon>
+              <Drawer anchor='right' open={isDrawerOpen} onClose={toggleDrawer}>
+
+                <Collapse.Group accordion={false}>
+                  {
+                    <SidebarContainer>
+
+                      <ListCategory open text='pagini'>
                         {
-                          tab.text
+                          tabs.map((tab) => (
+                            <ListItem text={tab.text} link={tab.link} />
+                          ))
                         }
-                      </span>
-                    </Tab>
-                  ))
-                }
-              </TabLine>
-              <Input placeholder='Cauta...' contentRight={<SearchIcon sx={{ color: '#003C54' }} />}>
-              </Input>
-            </FlexContainer>
-          </Breakpoint>
-          <Breakpoint customQuery="(max-width:549px)">
-            <HamburgerIcon onClick={toggleDrawer}>
-              <MenuIcon sx={{ color: 'white' }} />
-            </HamburgerIcon>
-            <Drawer anchor='right' open={isDrawerOpen} onClose={toggleDrawer}>
+                      </ListCategory>
+                    </SidebarContainer>
 
-              <Collapse.Group accordion={false}>
-                {
-                  <SidebarContainer>
-
-                    <ListCategory open text='pagini'>
-                      {
-                        tabs.map((tab) => (
-                          <ListItem text={tab.text} link={tab.link} />
-                        ))
-                      }
-                    </ListCategory>
-                  </SidebarContainer>
-
-                }
-              </Collapse.Group>
-            </Drawer>
-          </Breakpoint>
-        </Container>
-      </BottomBar>
+                  }
+                </Collapse.Group>
+              </Drawer>
+            </Breakpoint>
+          </Container>
+        </BottomBar>
+      </FullContainer>
     </>
   )
 }
