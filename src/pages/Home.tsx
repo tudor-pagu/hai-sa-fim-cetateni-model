@@ -7,14 +7,14 @@ export default function Home() {
     <DefaultLayout>
       <div>
         Home
-        <ListCategory text='Banca nationala'>
+        <ListCategory open text='Banca nationala'>
           <ListItem>
             Banca nationala e foarte smeche
           </ListItem>
           <ListItem>
             Banca nationala e geniala
           </ListItem>
-          <ListCategory text='categorie 2'>
+          <ListCategory open text='categorie 2'>
             <ListItem>
               Sunt inauntru
             </ListItem>
