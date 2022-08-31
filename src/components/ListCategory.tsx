@@ -8,8 +8,9 @@ import { SettingsInputComponent } from '@mui/icons-material';
 import { getAutoHeightDuration } from '@mui/material/styles/createTransitions';
 
 import Alpine from 'alpinejs'
+//@ts-ignore
 import collapse from '@alpinejs/collapse'
- 
+
 Alpine.plugin(collapse)
 
 type Props = {
@@ -47,46 +48,29 @@ const HeightContext = React.createContext(() => { });
 ///add area label
 export default function ListCategory({ text, children, open }: Props) {
     const [isOpen, setIsOpen] = useState(!!open);
-    const collapsableRef = useRef<HTMLDivElement>(null);
-    //const [maxHeight, setMaxHeight] = useState(open ? null : '0px');
 
-    const handleClick = (recalculateParentHeight: () => void) => {
+    const handleClick = () => {
         setIsOpen(!isOpen);
-        recalculateHeight();
-        recalculateParentHeight();
     }
-    const recalculateHeight = () => {
-        if (collapsableRef.current) {
-            if (!isOpen) {
-                collapsableRef.current.style.maxHeight = '0px';
-            } else {
-                collapsableRef.current.style.maxHeight = collapsableRef.current.scrollHeight + 'px';
-            }
-        }
-    }
+
 
     return (
-        <HeightContext.Consumer>
+
+        < StyleDiv >
+            <InnerText onClick={() => handleClick }>
+                {text}
+                <IconButton>
+                    <ExpandMoreIcon className={"icon " + (isOpen ? "open" : "")} style={{ color: theme.sidebarTextGray }} />
+                </IconButton>
+            </InnerText>
             {
-                recalculateParentHeight =>
-                    <StyleDiv>
-                        <InnerText onClick={() => { handleClick(recalculateParentHeight) }}>
-                            {text}
-                            <IconButton>
-                                <ExpandMoreIcon className={"icon " + (isOpen ? "open" : "")} style={{ color: theme.sidebarTextGray }} />
-                            </IconButton>
-                        </InnerText>
-                        {
-                            <HeightContext.Provider value={recalculateHeight}>
-                                <div ref={collapsableRef} className={'list-collapsable'} style={(!open) ? { maxHeight: '0px' } : {}}>
-                                    {
-                                        children
-                                    }
-                                </div>
-                            </HeightContext.Provider>
-                        }
-                    </StyleDiv>
+                <div x-show={isOpen} x-collapse>
+                    {
+                        children
+                    }
+                </div>
             }
-        </HeightContext.Consumer>
+        </StyleDiv >
+
     )
 }
