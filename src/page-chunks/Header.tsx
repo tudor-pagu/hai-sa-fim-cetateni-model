@@ -11,6 +11,8 @@ import { Breakpoint } from 'react-socks';
 import MenuIcon from '@mui/icons-material/Menu';
 import Button from '@mui/material/Button';
 import Drawer from '@mui/material/Drawer';
+import { Collapse, Text } from "@nextui-org/react";
+
 interface Props {
   children: React.ReactNode;
   tabs: {
@@ -157,23 +159,18 @@ export default function Header({ children, tabs }: Props) {
               <MenuIcon sx={{ color: 'white' }} />
             </HamburgerIcon>
             <Drawer anchor='right' open={isDrawerOpen} onClose={toggleDrawer}>
-              <StaticDrawerTab>
-                Pagini
-              </StaticDrawerTab>
-              {
-                tabs.map((tab) => (
-                  <DrawerTab onClick={handleTabClick.bind(null, tab)}>
-                    <span>
-                      {
-                        tab.text
-                      }
-                    </span>
-                  </DrawerTab>
-                ))
-              }
-              <StaticDrawerTab>
-                Articole
-              </StaticDrawerTab>
+  
+              <Collapse.Group accordion={false}>
+                {
+                  tabs.map((tab) => (
+                    <Collapse title='Option A' style={{fontSize:'1rem'}}>
+                        <Text>
+                          hi
+                        </Text>
+                    </Collapse>
+                  ))
+                }
+              </Collapse.Group>
             </Drawer>
           </Breakpoint>
         </Container>

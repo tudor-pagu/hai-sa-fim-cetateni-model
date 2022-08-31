@@ -5,6 +5,7 @@ const theme = {
     accentRed : '#D21E3B',
     titleGray : '#B4B4B4',
     lighterGray : '#D5D5D6',
+    sidebarTextGray : '#939393',
 }
 
 export default theme;
