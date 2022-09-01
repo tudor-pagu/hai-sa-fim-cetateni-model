@@ -81,7 +81,7 @@ export default function Home() {
   return (
     <DefaultLayout>
       <FullContainer>
-        <Container>
+        <Container style={{paddingBottom : '120px'}}>
 
           <HeroImage image={flagsImage} infoBoxes={infoBoxes}>
             <Center>
