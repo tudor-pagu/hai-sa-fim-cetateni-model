@@ -59,19 +59,22 @@ const infoBoxes = [
     color : '#00B5E2',
     mainText : 'Campaign',
     subText : 'stuff',
-    renderIcon : ((props:any) => (<AccessAlarmIcon {...props}></AccessAlarmIcon>))
+    renderIcon : ((props:any) => (<AccessAlarmIcon {...props}></AccessAlarmIcon>)),
+    link : '/1',
   },
   {
     color : '#00C8A0',
     mainText : 'Campaign',
     subText : 'stuff',
-    renderIcon : ((props:any) => (<AccessAlarmIcon {...props}></AccessAlarmIcon>))
+    renderIcon : ((props:any) => (<AccessAlarmIcon {...props}></AccessAlarmIcon>)),
+    link: '/2',
   },
   {
     color : '#FB6C6C',
     mainText : 'Campaign',
     subText : 'stuff',
-    renderIcon : ((props:any) => (<AccessAlarmIcon {...props}></AccessAlarmIcon>))
+    renderIcon : ((props:any) => (<AccessAlarmIcon {...props}></AccessAlarmIcon>)),
+    link: '/3',
   },
 ]
 export default function Home() {

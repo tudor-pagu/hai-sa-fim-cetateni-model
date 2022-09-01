@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import theme from '../global/theme';
+import { useNavigate } from 'react-router-dom';
 type Props = {
     children?: React.ReactNode;
     image: string;
@@ -40,36 +41,65 @@ const InfoBox = styled.div`
     background-color: ${theme.infoBoxBackgroundColor};
     color: ${theme.infoBoxTextColor};
     flex : 1;
-    min-width : 100px;
+    min-width : 200px;
     border-top : 6px solid ${props => props.color};
+    height : 200px;
+    transition : 0.7s;
 
+    .mainText,.subText,.infoBox-icon {
+        transition : 0.7s;
+    }
+    .infoBox-icon {
+        color: ${theme.infoBoxIconColor};
+        width: 60px;
+        height: 60px;
+    }
     .border-wrapper {
         padding-top : 15px;
-    padding-bottom : 40px;
-     border-right : 1px solid ${theme.infoBoxIconColor};
-     border-left : 1px solid ${theme.backgroundBeige};
-     width : 100%;
-     height : 100%;
-     display : flex;
-    flex-direction : column;
-    align-items : center;
-    justify-content : center;
+         padding-bottom : 40px;
+         border-right : 1px solid ${theme.infoBoxIconColor};
+        border-left : 1px solid ${theme.backgroundBeige};
+        width : 100%;
+        height : 100%;
+         display : flex;
+        flex-direction : column;
+        align-items : center;
+     justify-content : center;
     }
     .last-border {
         border-right : none;
     }
+
+    .mainText {
+            color : ${props => props.color};    
+            font-size : 2rem;
+        }
+    .subText {
+            color : '#4B4B4B';
+            font-size : 1rem;
+            font-weight : lighter;
+        }
+
+    :hover {
+        cursor : pointer;
+        background-color : ${props => props.color};
+        .mainText {
+            color : white;
+        }
+        .subText {
+            color : white;
+            opacity : 0.5;
+        }
+        .infoBox-icon {
+            color : white;
+            height : 80px;
+            width : 80px;
+            opacity : 0.6;
+        }
+    }
 `
 
-const MainText = styled.div`
-    color : ${props => props.color};
-    font-size : 2rem;
-`
 
-const SubText = styled.div`
-    color : '#4B4B4B';
-    font-size : 1rem;
-    font-weight : lighter;
-`
 
 interface InfoBoxProps {
     children?: React.ReactNode;
@@ -77,29 +107,31 @@ interface InfoBoxProps {
     subText: string;
     color: string;
     last?: boolean;
+    link:string,
 }
 const InfoBoxIconWrapper = styled.div`
     height : 100px;
     width : 100px;
     color : '#C3C3C4';
 `
-const InfoBoxComp = ({ children, color, mainText, subText, last }: InfoBoxProps) => {
+const InfoBoxComp = ({ children, color, mainText, subText, last, link }: InfoBoxProps) => {
+    const navigate = useNavigate();
     return (
-        <InfoBox color={color}>
+        <InfoBox color={color} onClick={()=>{navigate(link)}}>
             <div className={'border-wrapper' + ((last) ? " last-border" : "")}>
                 {
                     children
                 }
-                <MainText color={color}>
+                <div className='mainText' color={color}>
                     {
                         mainText
                     }
-                </MainText>
-                <SubText>
+                </div>
+                <div className='subText'>
                     {
                         subText
                     }
-                </SubText>
+                </div>
             </div>
         </InfoBox>
     )
@@ -110,6 +142,7 @@ interface InfoBoxContent {
     mainText: string,
     subText: string,
     color: string,
+    link: string,
 }
 export default function HeroImage({ image, children, infoBoxes }: Props) {
     return (
@@ -124,9 +157,9 @@ export default function HeroImage({ image, children, infoBoxes }: Props) {
             <InfoContainer>
                 {
                     infoBoxes.map((infoBoxContent, index) => (
-                        <InfoBoxComp last={(index + 1) === infoBoxes.length} color={infoBoxContent.color} mainText={infoBoxContent.mainText} subText={infoBoxContent.subText}>
+                        <InfoBoxComp link={infoBoxContent.link} last={(index + 1) === infoBoxes.length} color={infoBoxContent.color} mainText={infoBoxContent.mainText} subText={infoBoxContent.subText}>
                             {
-                                infoBoxContent.renderIcon({ style: { color: theme.infoBoxIconColor, width: '60px', height: '60px' } })
+                                infoBoxContent.renderIcon({ className: 'infoBox-icon' })
                             }
                         </InfoBoxComp>
                     ))
