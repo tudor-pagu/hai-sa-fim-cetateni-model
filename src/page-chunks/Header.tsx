@@ -2,7 +2,8 @@ import React from 'react'
 import { useState } from 'react';
 import styled from 'styled-components'
 import theme from '../global/theme';
-import { Container, Input } from "@nextui-org/react";
+import {Input} from "@nextui-org/react";
+import Container from "../components/MyContainer"
 import { Link, useNavigate } from 'react-router-dom';
 import UnstyledLink from '../components/UnstyledLink';
 import { execFile } from 'child_process';
@@ -37,8 +38,12 @@ const MiddleBar = styled.div`
   display : flex;
   align-items : center;
 
-  @media only screen and (max-width: 767px) {
-    font-size: 1.2rem;
+  @media only screen and (max-width: ${`${theme.md - 1}px`}) {
+    font-size: 1.5rem;
+    min-height : 50px;
+  }
+  @media only screen and (max-width: ${`${theme.sm - 1}px`}) {
+    font-size: 1rem;
     min-height : 50px;
   }
   span {
@@ -49,6 +54,8 @@ const MiddleBar = styled.div`
 const BottomBar = styled.div`
   background-color : white;
   min-height : 50px;
+  display : flex;
+  align-items : stretch;
 `
 const Tab = styled.div`
   padding : 20px 0px;
@@ -95,8 +102,10 @@ const TabLine = styled.div`
 `
 
 const HamburgerIcon = styled.div`
-  width:30px;
-  height:30px;
+  padding-left:100%;
+  padding-right:100%;
+
+  height:100%;
   background-color: ${theme.linkHighlight};
   display : flex;
   justify-content : center;
@@ -145,8 +154,8 @@ export default function Header({ children, tabs }: Props) {
           </Container>
         </MiddleBar>
         <BottomBar>
-          <Container>
-            <Breakpoint customQuery='(min-width:550px)'>
+          <Container style={{display:'flex',alignItems:'stretch'}}>
+            <Breakpoint customQuery={`(min-width:${theme.md}px)`}>
               <FlexContainer>
                 <TabLine>
                   {
@@ -165,9 +174,9 @@ export default function Header({ children, tabs }: Props) {
                 </Input>
               </FlexContainer>
             </Breakpoint>
-            <Breakpoint customQuery="(max-width:549px)">
+            <Breakpoint customQuery={`(max-width:${theme.md - 1}px)`}>
               <HamburgerIcon onClick={toggleDrawer}>
-                <MenuIcon sx={{ color: 'white' }} />
+                <MenuIcon sx={{ height:'100%',color: 'white' }} />
               </HamburgerIcon>
               <Drawer anchor='right' open={isDrawerOpen} onClose={toggleDrawer}>
 
