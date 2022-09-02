@@ -1,0 +1,45 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images" # Media files will be stored in the repo under images/uploads
+public_folder: "/images"
+
+collections:
+  - name: "nested-posts"
+    label: "Nested Posts"
+    label_singular: "Nested Post"
+    folder: "posts/nested-posts"
+    create: true
+
+    nested:
+      depth: 100
+      summary: "{{title}}"
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: Body
+        name: body
+        required: false
+        widget: markdown
+      - label: "Featured"
+        name : "featured"
+        widget: "boolean"
+        default: false
+      - label: "Excerpt"
+        name: "excerpt"
+        widget: "text"
+        required: false
+
+      - label: "Featured Image"
+        name: "featured image"
+        widget: "image"
+        required: false
+      - label: "Featured Image alt"
+        name: "featured image alt"
+        widget: "string"
+        required: false
+    # adding a meta object with a path property allows editing the path of entries
+    # moving an existing entry will move the entire sub tree of the entry to the new location
+    meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
