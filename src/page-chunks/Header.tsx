@@ -4,15 +4,13 @@ import styled from 'styled-components'
 import theme from '../global/theme';
 import {Input} from "@nextui-org/react";
 import Container from "../components/MyContainer"
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import UnstyledLink from '../components/UnstyledLink';
-import { execFile } from 'child_process';
 import SearchIcon from '@mui/icons-material/Search';
 import { Breakpoint } from 'react-socks';
 import MenuIcon from '@mui/icons-material/Menu';
-import Button from '@mui/material/Button';
 import Drawer from '@mui/material/Drawer';
-import { Collapse, Text } from "@nextui-org/react";
+import { Collapse } from "@nextui-org/react";
 import ListCategory from '../components/ListCategory';
 import ListItem from '../components/ListItem';
 
@@ -67,7 +65,7 @@ const Tab = styled.div`
     cursor: pointer;
   }
 `
-
+/*
 const DrawerTab = styled.div`
     transition : 0.3;
     padding : 10px 20px;
@@ -92,7 +90,7 @@ const StaticDrawerTab = styled.div`
     color : white;
     border-bottom : 1px solid gray;
 `
-
+*/
 const FlexContainer = styled.div`
   display : flex;
 `

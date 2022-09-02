@@ -109,11 +109,7 @@ interface InfoBoxProps {
     last?: boolean;
     link:string,
 }
-const InfoBoxIconWrapper = styled.div`
-    height : 100px;
-    width : 100px;
-    color : '#C3C3C4';
-`
+
 const InfoBoxComp = ({ children, color, mainText, subText, last, link }: InfoBoxProps) => {
     const navigate = useNavigate();
     return (

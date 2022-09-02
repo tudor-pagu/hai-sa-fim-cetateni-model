@@ -1,11 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
 import theme from '../global/theme';
 import styled from 'styled-components';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { IconButton } from '@mui/material';
-import { Link } from 'react-router-dom';
-import { SettingsInputComponent } from '@mui/icons-material';
-import { getAutoHeightDuration } from '@mui/material/styles/createTransitions';
 import SmoothCollapse from 'react-smooth-collapse';
 
 type Props = {

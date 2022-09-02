@@ -6,8 +6,7 @@ interface Props extends React.HTMLAttributes<HTMLDivElement> {
     children?: React.ReactNode;
 }
 
-const OutsideWrapper = styled.div`
-`
+
 const Wrapper = styled.div`
    /* @media only screen and (min-width: ${`${theme.sm}px`}) {
         width : 540px;
