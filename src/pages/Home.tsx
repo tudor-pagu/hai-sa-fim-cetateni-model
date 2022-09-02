@@ -1,7 +1,5 @@
 import React from 'react'
 import DefaultLayout from '../layouts/DefaultLayout'
-import ListItem from "../components/ListItem";
-import ListCategory from "../components/ListCategory"
 import styled from 'styled-components';
 import theme from '../global/theme';
 import HeroImage from '../page-chunks/HeroImage';
