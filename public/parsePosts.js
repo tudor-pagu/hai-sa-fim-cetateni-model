@@ -46,6 +46,7 @@ function cutPre(dir, nr) {
     newSol += removePreNum(curent);
     return newSol;
 }
+let nrOfRoots = 0;
 function parsePost(dir) {
     return fs.promises.readdir(dir)
         .then((val) => {
@@ -75,6 +76,10 @@ function parsePost(dir) {
     
                 }
             } else {
+                nrOfRoots++;
+                if (nrOfRoots > 1) {
+                    throw new Error('Too many roots, check if there are nonexistant categories');
+                }
                 return {
                     url: url,
                     content : "root",

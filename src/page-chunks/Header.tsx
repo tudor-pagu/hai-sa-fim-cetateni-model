@@ -13,6 +13,7 @@ import Drawer from '@mui/material/Drawer';
 import { Collapse } from "@nextui-org/react";
 import ListCategory from '../components/ListCategory';
 import ListItem from '../components/ListItem';
+import ArticleAccordion from '../components/ArticleAccordion';
 
 interface Props {
   children: React.ReactNode;
@@ -189,6 +190,7 @@ export default function Header({ children, tabs }: Props) {
                           ))
                         }
                       </ListCategory>
+                      <ArticleAccordion/>
                     </SidebarContainer>
 
                   }

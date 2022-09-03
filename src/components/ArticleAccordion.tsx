@@ -11,29 +11,43 @@ const Container = styled.div`
     
 `
 
-function render(posts: Post) {
+function renderPosts(posts: Post): JSX.Element {
   if (posts.kids.length === 0) {
     if (posts.content !== 'root') {
       return (
-        <ListItem text={posts.content.metadata.title} link={posts.url}/>
+        <ListItem text={posts.content.metadata.title} link={posts.url} />
       )
     } else {
-      return <ListItem text='root' link='root'/>
+      return <ListItem text='root' link='root' /> ///should never be reachable
     }
   }
-  /*return (
-      <ListCategory>
-      {
 
-      }
+  if (posts.content === 'root') {
+    return (
+      <ListCategory text='articole' open>
+        {
+          posts.kids.map((post) => renderPosts(post))
+        }
       </ListCategory>
-  )*/
+    )
+  }
+  else {
+    return (
+      <ListCategory text={posts.content.metadata.title}>
+        {
+          posts.kids.map((post) => renderPosts(post))
+        }
+      </ListCategory>
+    )
+  }
 }
 
 export default function ArticleAccordion({ }: Props) {
   return (
     <Container>
-      renderPosts(posts);
+      {
+        renderPosts(posts)
+      }
     </Container>
   )
-}
+} 
