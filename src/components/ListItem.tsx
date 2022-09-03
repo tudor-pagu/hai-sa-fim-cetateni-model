@@ -7,6 +7,7 @@ type Props = {
     children?: React.ReactNode;
     text: string;
     link: string;
+    light?: boolean;
 }
 
 const StyledLink = styled(Link)`

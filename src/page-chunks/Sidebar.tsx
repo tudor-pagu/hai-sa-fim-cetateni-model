@@ -1,11 +1,11 @@
 import React from 'react'
-import ArticleAccordion from '../components/ArticleAccordion';
+import ColoredArticleAccordion from '../components/ColoredArticleAccordion';
 type Props = {}
 
 export default function Sidebar({}: Props) {
   return (
     <>
-        <ArticleAccordion/>
+        <ColoredArticleAccordion />
     </>
   )
 }

@@ -9,10 +9,16 @@ type Props = {
     children?: React.ReactNode;
     text: string;
     open?: boolean,
+    light?: boolean,
 }
 
-const StyleDiv = styled.div`
-    color : ${theme.sidebarTextGray};
+function getColor(props:Props) {
+    return (props.light)?theme.coloredAccordionText:theme.sidebarTextGray;
+    
+}
+
+const StyleDiv = styled.div<Props>`
+    color : ${props => getColor(props)};
     font-size : 1rem;
     .padding-left-20 {
         padding-left : 20px;
@@ -35,7 +41,7 @@ const InnerText = styled.div`
 
 ///TODO
 ///add area label
-export default function ListCategory({ text, children, open }: Props) {
+export default function ListCategory({light, text, children, open }: Props) {
     const [isOpen, setIsOpen] = useState(!!open);
 
     const handleClick = () => {
@@ -45,11 +51,11 @@ export default function ListCategory({ text, children, open }: Props) {
 
     return (
 
-        < StyleDiv >
+        < StyleDiv {...{light,text,children,open}}>
             <InnerText onClick={handleClick}>
                 {text}
                 <IconButton style={{padding:'0px'}}>
-                    <ExpandMoreIcon className={"icon " + (isOpen ? "open" : "")} style={{ color: theme.sidebarTextGray }} />
+                    <ExpandMoreIcon className={"icon " + (isOpen ? "open" : "")} style={{ color: getColor({light,text,children,open}) }} />
                 </IconButton>
             </InnerText>
             {

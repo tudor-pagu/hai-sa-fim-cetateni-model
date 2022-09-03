@@ -10,6 +10,7 @@ const theme = {
     infoBoxTextColor : '#4B4B4B',
     infoBoxBackgroundColor : '#E1E1E1',
     infoBoxIconColor : '#C3C3C4',
+    coloredAccordionText:'#FFEFD8',
     heroImageFont: "droid-serif",
     logoFont : "roboto-slab",
     sm : 576,
