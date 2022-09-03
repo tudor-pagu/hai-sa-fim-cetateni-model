@@ -46,10 +46,11 @@ function cutPre(dir, nr) {
     newSol += removePreNum(curent);
     return newSol;
 }
+let nrOfRoots = 0;
 function parsePost(dir) {
     return fs.promises.readdir(dir)
         .then((val) => {
-            const slug = "articole/"+cutPre(dir,2);
+            const url = "articole/"+cutPre(dir,2);
             const contentList = val
                 .filter((file) => path.extname(file) === '.md')
                 .map((file) => {
@@ -57,7 +58,7 @@ function parsePost(dir) {
                         .then((text) => {
                             const { content, metadata } = metadataParser(text);
                             return {
-                                slug: slug,
+                                url: url,
                                 content: md.render(content),
                                 metadata: metadata,
                             }
@@ -66,7 +67,7 @@ function parsePost(dir) {
 
             if (contentList.length > 0) {
                 return {
-                    slug : slug,
+                    url : url,
                     content: contentList[0],
     
                     kids: val
@@ -75,8 +76,12 @@ function parsePost(dir) {
     
                 }
             } else {
+                nrOfRoots++;
+                if (nrOfRoots > 1) {
+                    throw new Error('Too many roots, check if there are nonexistant categories');
+                }
                 return {
-                    slug: slug,
+                    url: url,
                     content : "root",
 
                     kids: val
@@ -97,7 +102,7 @@ function resolveTree(tree) {
         if (!Array.isArray(tree.kids)) {
             return tree.content.then((content) => {
                 return {
-                    slug: tree.slug,
+                    url: tree.url,
                     content: content,
                     kids: [],
                     id: ++globalId,
@@ -106,7 +111,7 @@ function resolveTree(tree) {
         }
         return Promise.all([tree.content, ...tree.kids.map((node) => resolveTree(node))]).then((nodes) => {
             return {
-                slug: tree.slug,
+                url: tree.url,
                 content: nodes[0],
                 kids: nodes.slice(1),
                 id: ++globalId,
@@ -117,7 +122,7 @@ function resolveTree(tree) {
 
 
 resolveTree(parsePost(postsRoot)).then((val) => {
-    fs.writeFile('src/posts.json', JSON.stringify(val), (err) => {
+    fs.writeFile('src/postsJSON.json', JSON.stringify(val), (err) => {
         if (err) {
             throw new Error(err);
         }

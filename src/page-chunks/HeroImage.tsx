@@ -10,6 +10,7 @@ type Props = {
 
 const FullContainer = styled.div`
   box-shadow: 0px 5px 15px -4px gray;
+  margin-bottom : 100px;
 `
 
 const InfoContainer = styled.div`

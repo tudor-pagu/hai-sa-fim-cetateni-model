@@ -10,7 +10,7 @@ import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
 const FullContainer = styled.div`
   background-color : ${theme.backgroundBeige};
   min-height : 100px;
-  box-shadow : inset 0 1px 3px #d8d8d8;
+  box-shadow : inset 0 1px 3px -3px #d8d8d8;
 `
 
 const MainTagline = styled.div`
@@ -54,46 +54,44 @@ const Center = styled.div`
 
 const infoBoxes = [
   {
-    color : '#00B5E2',
-    mainText : 'Campaign',
-    subText : 'stuff',
-    renderIcon : ((props:any) => (<AccessAlarmIcon {...props}></AccessAlarmIcon>)),
-    link : '/1',
+    color: '#00B5E2',
+    mainText: 'Campaign',
+    subText: 'stuff',
+    renderIcon: ((props: any) => (<AccessAlarmIcon {...props}></AccessAlarmIcon>)),
+    link: '/1',
   },
   {
-    color : '#00C8A0',
-    mainText : 'Campaign',
-    subText : 'stuff',
-    renderIcon : ((props:any) => (<AccessAlarmIcon {...props}></AccessAlarmIcon>)),
+    color: '#00C8A0',
+    mainText: 'Campaign',
+    subText: 'stuff',
+    renderIcon: ((props: any) => (<AccessAlarmIcon {...props}></AccessAlarmIcon>)),
     link: '/2',
   },
   {
-    color : '#FB6C6C',
-    mainText : 'Campaign',
-    subText : 'stuff',
-    renderIcon : ((props:any) => (<AccessAlarmIcon {...props}></AccessAlarmIcon>)),
+    color: '#FB6C6C',
+    mainText: 'Campaign',
+    subText: 'stuff',
+    renderIcon: ((props: any) => (<AccessAlarmIcon {...props}></AccessAlarmIcon>)),
     link: '/3',
   },
 ]
 export default function Home() {
   return (
-    <DefaultLayout>
-      <FullContainer>
-        <Container style={{paddingBottom : '120px'}}>
+    <DefaultLayout hero={
 
-          <HeroImage image={flagsImage} infoBoxes={infoBoxes}>
-            <Center>
-              <MainTagline>
-                  Educatie civica
-              </MainTagline>
-              <Secondary>
-                  Pe intelesul tuturor
-              </Secondary>
-            </Center>
-          </HeroImage>
-        </Container>
+      <HeroImage image={flagsImage} infoBoxes={infoBoxes}>
+        <Center>
+          <MainTagline>
+            Educatie civica
+          </MainTagline>
+          <Secondary>
+            Pe intelesul tuturor
+          </Secondary>
+        </Center>
+      </HeroImage>
 
-      </FullContainer>
+    }>
+      hi
     </DefaultLayout>
   )
 }
