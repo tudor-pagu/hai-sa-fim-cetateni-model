@@ -3,15 +3,10 @@ import DefaultLayout from '../layouts/DefaultLayout'
 import styled from 'styled-components';
 import theme from '../global/theme';
 import HeroImage from '../page-chunks/HeroImage';
-import Container from '../components/MyContainer';
 import flagsImage from '../img/flag2.jpg';
 import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
 import FrontPage from "../page-chunks/FrontPage";
-const FullContainer = styled.div`
-  background-color : ${theme.backgroundBeige};
-  min-height : 100px;
-  box-shadow : inset 0 1px 3px -3px #d8d8d8;
-`
+
 
 const MainTagline = styled.div`
   font-family : ${theme.heroImageFont};

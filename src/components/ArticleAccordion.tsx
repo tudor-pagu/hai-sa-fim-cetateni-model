@@ -42,7 +42,7 @@ function renderPosts(posts: Post): JSX.Element {
   }
 }
 
-export default function ArticleAccordion({ }: Props) {
+export default function ArticleAccordion(_props: Props) {
   return (
     <Container>
       {

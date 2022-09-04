@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from "styled-components";
 import ListCategory from './ListCategory';
 import ListItem from './ListItem';
@@ -43,7 +42,7 @@ function renderPosts(posts: Post): JSX.Element {
   }
 }
 
-export default function ArticleAccordion({ }: Props) {
+export default function ArticleAccordion(_props: Props) {
   return (
     <Container>
       {

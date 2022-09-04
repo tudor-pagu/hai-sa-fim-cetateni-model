@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components';
 type Props = {}
 
@@ -14,7 +13,7 @@ const Heading = styled.div`
     color : #969696;
 `
 
-export default function FrontPage({}: Props) {
+export default function FrontPage(_props: Props) {
   return (
     <>
         <Heading>
