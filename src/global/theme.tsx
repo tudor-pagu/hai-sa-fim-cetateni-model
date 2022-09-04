@@ -13,6 +13,7 @@ const theme = {
     coloredAccordionText:'#FFEFD8',
     heroImageFont: "droid-serif",
     logoFont : "roboto-slab",
+    borderBottomAccordion: '2px dotted rgba(255,255,255,0.3)',
     sm : 576,
     md : 768,
     lg : 992,

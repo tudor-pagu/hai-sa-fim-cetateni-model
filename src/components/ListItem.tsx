@@ -10,22 +10,26 @@ type Props = {
     light?: boolean;
 }
 
-const StyledLink = styled(Link)`
+const StyledLink = styled(Link) <Props>`
     color : inherit;
     transition : 0.1s;
     :hover {
         color : ${theme.linkHighlight};
     }
+    font-family : 'roboto-slab';
+`
+const StyledDiv = styled.div<Props>`
+    border-bottom : ${props => props.light ? theme.borderBottomAccordion : 'none'};
 `
 
-export default function ListItem({ text, link }: Props) {
+export default function ListItem({ light, text, link }: Props) {
     return (
-        <div>
-            <StyledLink to={link}>
+        <StyledDiv {...{ light, text, link }}>
+            <StyledLink to={link} {...{ light, text, link }}>
                 {
                     text
                 }
             </StyledLink>
-        </div>
+        </StyledDiv>
     )
 }

@@ -28,6 +28,7 @@ const InnerText = styled.div`
     display : flex;
     align-items : center;
     gap : 8px;
+    font-family : 'roboto-slab';
     .icon {
         transition : 0.2s;
     }
@@ -36,6 +37,12 @@ const InnerText = styled.div`
     }
     .open {
         transform : rotate(180deg);
+    }
+
+    &.light {
+        font-weight : 1.3rem;
+        padding-bottom : 6px;
+        border-bottom : ${theme.borderBottomAccordion};
     }
 `
 
@@ -51,8 +58,8 @@ export default function ListCategory({light, text, children, open }: Props) {
 
     return (
 
-        < StyleDiv {...{light,text,children,open}}>
-            <InnerText onClick={handleClick}>
+        < StyleDiv  {...{light,text,children,open}}>
+            <InnerText className={light?'light':""} onClick={handleClick}>
                 {text}
                 <IconButton style={{padding:'0px'}}>
                     <ExpandMoreIcon className={"icon " + (isOpen ? "open" : "")} style={{ color: getColor({light,text,children,open}) }} />

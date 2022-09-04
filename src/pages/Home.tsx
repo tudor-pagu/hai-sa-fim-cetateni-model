@@ -6,7 +6,7 @@ import HeroImage from '../page-chunks/HeroImage';
 import Container from '../components/MyContainer';
 import flagsImage from '../img/flag2.jpg';
 import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
-
+import FrontPage from "../page-chunks/FrontPage";
 const FullContainer = styled.div`
   background-color : ${theme.backgroundBeige};
   min-height : 100px;
@@ -91,7 +91,7 @@ export default function Home() {
       </HeroImage>
 
     }>
-      hi
+      <FrontPage/>
     </DefaultLayout>
   )
 }

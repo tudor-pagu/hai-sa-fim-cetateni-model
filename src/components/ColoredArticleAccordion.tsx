@@ -9,7 +9,7 @@ type Props = {}
 
 const Container = styled.div`
     background-color : ${theme.middleBlue};
-    padding : 20px 10px;
+    padding : 30px 15px;
 `
 
 function renderPosts(posts: Post): JSX.Element {
@@ -25,11 +25,11 @@ function renderPosts(posts: Post): JSX.Element {
 
   if (posts.content === 'root') {
     return (
-      <ListCategory light text='articole' open>
+      <>
         {
           posts.kids.map((post) => renderPosts(post))
         }
-      </ListCategory>
+      </>
     )
   }
   else {
