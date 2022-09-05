@@ -15,7 +15,7 @@ interface Post {
     content: null | Content,
     kids: Post[],
     id: number,
-    ancestors : Post[],
+    ancestors : number[],
 }
 
 export default Post;

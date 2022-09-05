@@ -4,8 +4,10 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import htmlToPlain from '../util/htmlToPlain';
 import { Breadcrumbs, Typography } from '@mui/material';
-import Link from "@mui/material/Link";
+import { Link } from 'react-router-dom';
 import posts from '../util/posts';
+import getPostById from '../util/getPostById';
+import theme from '../global/theme';
 
 type Props = {
   post: Post;
@@ -15,7 +17,11 @@ interface ThumbnailProps {
   img: string;
 }
 
+const transitionTime = '0.5s';
+
 const Container = styled.div`
+  margin-bottom : 20px;
+  border-bottom : 3px solid ${theme.blackBorderColor};
   .card-title {
     text-align:center;
     font-size : 1.3rem;
@@ -27,7 +33,12 @@ const Container = styled.div`
     position : relative;
   }
 
-  .card-excerpt {
+  .card-bottom-row {
+    display : flex;
+    justify-content : space-between;
+    margin-top : 18px;
+  }
+  .card-excerpt,.card-author {
     padding-top : 20px;
     color : #777777;
     font-size : 0.875rem;
@@ -66,6 +77,9 @@ const Container = styled.div`
     left : 50%;
     transform : translate(-50%, -50%);  
   }
+  .upArrow,.rightArrow {
+    transition : ${transitionTime};
+  }
 `
 
 const Thumbnail = styled.div<ThumbnailProps>`
@@ -74,8 +88,12 @@ const Thumbnail = styled.div<ThumbnailProps>`
   background-position : center;
   background-size : cover;
  // background-color : blue;
-  transition : 0.3s;
+  transition : ${transitionTime};
   background-image : ${props => `url(${props.img})`};
+`
+
+const StyledLink = styled(Link)`
+  color : ${theme.linkHighlight};
 `
 
 function trimTitle(title: string, maxSize = 40) {
@@ -86,9 +104,7 @@ function trimTitle(title: string, maxSize = 40) {
 }
 export default function MediumArticleCard({ post }: Props) {
   const navigate = useNavigate();
-  const x = posts;
   if (post.content === null) return <div>Should not happen</div>;
-  console.log(post.content.metadata['featured image']);
   return (
     <Container>
       <div className='inner-container' onClick={() => { navigate(post.url) }} >
@@ -116,20 +132,25 @@ export default function MediumArticleCard({ post }: Props) {
         }
       </p>
       <div className='card-bottom-row'>
+        <div>
         <Breadcrumbs>
           {
             post.ancestors.slice(1).map((ancestor) => (
-              <Link underline='hover' color='inherit' href='/test' >
+              <StyledLink to={getPostById(ancestor).url} >
                 {
-                  ancestor.content!.metadata.title
+                  getPostById(ancestor).content!.metadata.title
                 }
-              </Link>
+              </StyledLink>
             ))
           }
-          <Typography color='black'>
-            Hi
-          </Typography>
+         
         </Breadcrumbs>
+        </div>
+        <div>
+          <span className='card-author'>
+            De {post.content.metadata.author}
+          </span>
+        </div>
       </div>
     </Container>
   )

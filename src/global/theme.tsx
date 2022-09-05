@@ -11,6 +11,8 @@ const theme = {
     infoBoxBackgroundColor : '#E1E1E1',
     infoBoxIconColor : '#C3C3C4',
     coloredAccordionText:'#FFEFD8',
+    blackBorderColor : '#262626',
+    grayBorderColor : '#ababab',
     heroImageFont: "droid-serif",
     logoFont : "roboto-slab",
     borderBottomAccordion: '2px dotted rgba(255,255,255,0.3)',

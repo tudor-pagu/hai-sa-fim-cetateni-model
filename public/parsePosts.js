@@ -97,7 +97,7 @@ function parsePost(dir) {
 
 let globalId = 0;
 
-function resolveTree(tree, ancestors = []) {
+function resolveTree(tree) {
     return tree.then((tree) => {
         if (!Array.isArray(tree.kids)) {
             return tree.content.then((content) => {
@@ -106,24 +106,28 @@ function resolveTree(tree, ancestors = []) {
                     content: content,
                     kids: [],
                     id: ++globalId,
-                    ancestors: ancestors,
                 }
             })
         }
-        return Promise.all([tree.content, ...tree.kids.map((node) => resolveTree(node, ancestors.concat(tree)))]).then((nodes) => {
+        return Promise.all([tree.content, ...tree.kids.map((node) => resolveTree(node))]).then((nodes) => {
             return {
                 url: tree.url,
                 content: nodes[0],
                 kids: nodes.slice(1),
                 id: ++globalId,
-                ancestors: ancestors,
             }
         })
     })
 }
 
-
+function addAncestors(post, ancestors = []) {
+    post.ancestors = ancestors;
+    for (let i = 0; i < post.kids.length; i++) {
+        addAncestors(post.kids[i], ancestors.concat(post.id));
+    }
+}
 resolveTree(parsePost(postsRoot)).then((val) => {
+    addAncestors(val);
     fs.writeFile('src/postsJSON.json', JSON.stringify(val), (err) => {
         if (err) {
             throw new Error(err);
