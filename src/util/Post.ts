@@ -12,7 +12,7 @@ interface Content {
 
 interface Post {
     url: string;
-    content: 'root' | Content,
+    content: null | Content,
     kids: Post[],
     id: number,
     ancestors : Post[],

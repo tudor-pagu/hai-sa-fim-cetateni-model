@@ -13,7 +13,7 @@ const Container = styled.div`
 
 function renderPosts(posts: Post): JSX.Element {
   if (posts.kids.length === 0) {
-    if (posts.content !== 'root') {
+    if (posts.content !== null) {
       return (
         <ListItem light text={posts.content.metadata.title} link={posts.url} />
       )
@@ -22,7 +22,7 @@ function renderPosts(posts: Post): JSX.Element {
     }
   }
 
-  if (posts.content === 'root') {
+  if (posts.content === null) {
     return (
       <>
         {

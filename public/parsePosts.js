@@ -82,7 +82,7 @@ function parsePost(dir) {
                 }
                 return {
                     url: url,
-                    content: "root",
+                    content: null,
 
                     kids: val
                         .filter((file => path.extname(file) !== '.md'))

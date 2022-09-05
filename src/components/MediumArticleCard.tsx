@@ -3,8 +3,9 @@ import Post from '../util/Post'
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import htmlToPlain from '../util/htmlToPlain';
-import { Breadcrumbs } from '@mui/material';
+import { Breadcrumbs, Typography } from '@mui/material';
 import Link from "@mui/material/Link";
+import posts from '../util/posts';
 
 type Props = {
   post: Post;
@@ -85,12 +86,12 @@ function trimTitle(title: string, maxSize = 40) {
 }
 export default function MediumArticleCard({ post }: Props) {
   const navigate = useNavigate();
-
-  if (post.content === 'root') return <div>Should not happen</div>;
+  const x = posts;
+  if (post.content === null) return <div>Should not happen</div>;
   console.log(post.content.metadata['featured image']);
   return (
     <Container>
-      <div className='inner-container' onClick={() => {navigate(post.url)}} >
+      <div className='inner-container' onClick={() => { navigate(post.url) }} >
         <Thumbnail className='thumbnail' img={post.content.metadata['featured image']}>
           <div className='overlay'>
 
@@ -109,21 +110,26 @@ export default function MediumArticleCard({ post }: Props) {
         </div>
       </div>
       <p className='card-excerpt'>
-          {
-           post.content.metadata.excerpt &&
-           trimTitle(htmlToPlain(post.content.content), 120)
-          }
+        {
+          post.content.metadata.excerpt &&
+          trimTitle(htmlToPlain(post.content.content), 120)
+        }
       </p>
       <div className='card-bottom-row'>
-          <Breadcrumbs>
-            {
-              post.ancestors.splice(1).map((ancestor) => (
-                <Link underline='hover' color='inherit' href={ancestor.url} >
-                  {ancestor.content.metadata.title}
-                </Link>
-              ))
-            }
-          </Breadcrumbs>
+        <Breadcrumbs>
+          {
+            post.ancestors.slice(1).map((ancestor) => (
+              <Link underline='hover' color='inherit' href='/test' >
+                {
+                  ancestor.content!.metadata.title
+                }
+              </Link>
+            ))
+          }
+          <Typography color='black'>
+            Hi
+          </Typography>
+        </Breadcrumbs>
       </div>
     </Container>
   )
