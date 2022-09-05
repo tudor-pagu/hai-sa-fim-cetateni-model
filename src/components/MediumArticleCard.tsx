@@ -29,8 +29,9 @@ const Container = styled.div`
     font-family : 'roboto-slab';
     background-color : rgba(30,30,30,0.6);
     padding : 0.625rem;
-    margin-top : -3.2rem;
-    position : relative;
+    position : absolute;
+    bottom : 0;
+    width : 100%;
   }
 
   .card-bottom-row {
