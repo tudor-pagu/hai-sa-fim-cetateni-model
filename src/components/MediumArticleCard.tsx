@@ -3,6 +3,8 @@ import Post from '../util/Post'
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import htmlToPlain from '../util/htmlToPlain';
+import { Breadcrumbs } from '@mui/material';
+import Link from "@mui/material/Link";
 
 type Props = {
   post: Post;
@@ -113,7 +115,15 @@ export default function MediumArticleCard({ post }: Props) {
           }
       </p>
       <div className='card-bottom-row'>
-          
+          <Breadcrumbs>
+            {
+              post.ancestors.splice(1).map((ancestor) => (
+                <Link underline='hover' color='inherit' href={ancestor.url} >
+                  {ancestor.content.metadata.title}
+                </Link>
+              ))
+            }
+          </Breadcrumbs>
       </div>
     </Container>
   )

@@ -8,7 +8,7 @@ const postsRoot = 'posts/nested-posts';
 const md = new MarkdownIt();
 
 function removePreNum(sol) {
-    let newSol = "",adding = 0;
+    let newSol = "", adding = 0;
     for (let i = 0; i < sol.length; i++) {
         if (!isNaN(sol[i]) || sol[i] == '-') {
 
@@ -33,7 +33,7 @@ function cutPre(dir, nr) {
         }
     }
 
-    let newSol = "", curent="";
+    let newSol = "", curent = "";
     for (let i = 0; i < sol.length; i++) {
         if (sol[i] == '/') {
             newSol = newSol + removePreNum(curent);
@@ -50,7 +50,7 @@ let nrOfRoots = 0;
 function parsePost(dir) {
     return fs.promises.readdir(dir)
         .then((val) => {
-            const url = "articole/"+cutPre(dir,2);
+            const url = "articole/" + cutPre(dir, 2);
             const contentList = val
                 .filter((file) => path.extname(file) === '.md')
                 .map((file) => {
@@ -67,13 +67,13 @@ function parsePost(dir) {
 
             if (contentList.length > 0) {
                 return {
-                    url : url,
+                    url: url,
                     content: contentList[0],
-    
+
                     kids: val
                         .filter((file => path.extname(file) !== '.md'))
                         .map((file) => parsePost(path.join(dir, file)))
-    
+
                 }
             } else {
                 nrOfRoots++;
@@ -82,22 +82,22 @@ function parsePost(dir) {
                 }
                 return {
                     url: url,
-                    content : "root",
+                    content: "root",
 
                     kids: val
                         .filter((file => path.extname(file) !== '.md'))
                         .map((file) => parsePost(path.join(dir, file)))
-    
+
                 }
             }
 
-          
+
         })
 }
 
 let globalId = 0;
 
-function resolveTree(tree) {
+function resolveTree(tree, ancestors = []) {
     return tree.then((tree) => {
         if (!Array.isArray(tree.kids)) {
             return tree.content.then((content) => {
@@ -106,15 +106,17 @@ function resolveTree(tree) {
                     content: content,
                     kids: [],
                     id: ++globalId,
+                    ancestors: ancestors,
                 }
             })
         }
-        return Promise.all([tree.content, ...tree.kids.map((node) => resolveTree(node))]).then((nodes) => {
+        return Promise.all([tree.content, ...tree.kids.map((node) => resolveTree(node, ancestors.concat(tree)))]).then((nodes) => {
             return {
                 url: tree.url,
                 content: nodes[0],
                 kids: nodes.slice(1),
                 id: ++globalId,
+                ancestors: ancestors,
             }
         })
     })
@@ -131,15 +133,26 @@ resolveTree(parsePost(postsRoot)).then((val) => {
 
 
 function moveImagesToSrc(source, target) {
-    fs.promises.mkdir(target).then(() => {
+
+    if (fs.existsSync(target)) {
         fs.promises.readdir(source).then((dir) => {
             console.log('dir=', dir);
-            dir.forEach((file) =>  {
-                console.log('copying',source+'/'+file,target+'/'+file);
-                fs.promises.copyFile(source+'/'+file, target+'/'+file);
+            dir.forEach((file) => {
+                console.log('copying', source + '/' + file, target + '/' + file);
+                fs.promises.copyFile(source + '/' + file, target + '/' + file);
             })
         })
-    });
+    } else {
+        fs.promises.mkdir(target).then(() => {
+            fs.promises.readdir(source).then((dir) => {
+                console.log('dir=', dir);
+                dir.forEach((file) => {
+                    console.log('copying', source + '/' + file, target + '/' + file);
+                    fs.promises.copyFile(source + '/' + file, target + '/' + file);
+                })
+            })
+        });
+    }
 }
 
 moveImagesToSrc('public/images', 'src/images');

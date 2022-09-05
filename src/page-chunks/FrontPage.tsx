@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import MediumArticleCard from '../components/MediumArticleCard';
 import leafPosts from '../util/leafPosts';
+import posts from '../util/posts';
 type Props = {}
 
 const Heading = styled.div`
@@ -21,6 +22,7 @@ const CardContainer = styled.div`
   grid-template-columns : 1fr 1fr;
 `
 export default function FrontPage(_props: Props) {
+  const x = posts;
   return (
     <>
       <Heading>
