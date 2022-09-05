@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import MediumArticleCard from '../components/MediumArticleCard';
+import leafPosts from '../util/leafPosts';
 type Props = {}
 
 const Heading = styled.div`
@@ -13,12 +15,20 @@ const Heading = styled.div`
     color : #969696;
 `
 
+const CardContainer = styled.div`
+  display :grid;
+  justify-items : stretch;
+  grid-template-columns : 1fr 1fr;
+`
 export default function FrontPage(_props: Props) {
   return (
     <>
-        <Heading>
-            Articole recomandate
-        </Heading>
+      <Heading>
+        Articole recomandate
+      </Heading>
+      <CardContainer>
+        <MediumArticleCard post={leafPosts[0]} />
+      </CardContainer>
     </>
   )
 }

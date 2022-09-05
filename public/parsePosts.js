@@ -129,3 +129,17 @@ resolveTree(parsePost(postsRoot)).then((val) => {
     });
 })
 
+
+function moveImagesToSrc(source, target) {
+    fs.promises.mkdir(target).then(() => {
+        fs.promises.readdir(source).then((dir) => {
+            console.log('dir=', dir);
+            dir.forEach((file) =>  {
+                console.log('copying',source+'/'+file,target+'/'+file);
+                fs.promises.copyFile(source+'/'+file, target+'/'+file);
+            })
+        })
+    });
+}
+
+moveImagesToSrc('public/images', 'src/images');
