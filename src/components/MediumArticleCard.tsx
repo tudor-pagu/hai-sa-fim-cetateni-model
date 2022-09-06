@@ -85,7 +85,7 @@ const Container = styled.div`
 
 const Thumbnail = styled.div<ThumbnailProps>`
   min-width : 140px;
-  padding-top : 65%;
+  padding-top : 45%;
   background-position : center;
   background-size : cover;
  // background-color : blue;

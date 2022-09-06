@@ -9,7 +9,7 @@ function RouteSwitch() {
     <BrowserRouter>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/categorii/:id' element={<Category />} />
+          <Route path='/categorii/*' element={<Category />} />
         </Routes>
     </BrowserRouter>
   );

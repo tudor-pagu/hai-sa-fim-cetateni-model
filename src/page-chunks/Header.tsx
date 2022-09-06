@@ -147,7 +147,7 @@ export default function Header({ children, tabs }: Props) {
         <TopSocialBar></TopSocialBar>
         <MiddleBar>
           <Container>
-            <UnstyledLink to='' style={{fontFamily:theme.logoFont}}>
+            <UnstyledLink to='/' style={{fontFamily:theme.logoFont}}>
               {children}
             </UnstyledLink>
           </Container>

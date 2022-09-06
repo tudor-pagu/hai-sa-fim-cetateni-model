@@ -123,11 +123,11 @@ function resolveTree(tree) {
 function addAncestors(post, ancestors = []) {
     post.ancestors = ancestors;
     if (post.kids.length > 0) {
-        post.url = 'categorii/'+post.url;
+        post.url = '/categorii/'+post.url;
     } else {
-        post.url = 'articole/'+post.url;
+        post.url = '/articole/'+post.url;
     }
-    
+
     for (let i = 0; i < post.kids.length; i++) {
         addAncestors(post.kids[i], ancestors.concat(post.id));
     }

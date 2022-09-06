@@ -17,6 +17,8 @@ const theme = {
     footerTextColor : '#959595',
     heroImageFont: "droid-serif",
     logoFont : "roboto-slab",
+    headingFrontPageColor:'#969696',
+    headingMainColor : '#BEBEBE',
     borderBottomAccordion: '2px dotted rgba(255,255,255,0.3)',
     sm : 576,
     md : 768,
