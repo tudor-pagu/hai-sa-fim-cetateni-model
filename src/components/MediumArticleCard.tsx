@@ -32,6 +32,11 @@ const Container = styled.div`
     position : absolute;
     bottom : 0;
     width : 100%;
+
+    @media (max-width:${`${theme.sm - 1}px`}) {
+        font-size : 0.6rem;
+
+    }
   }
 
   .card-bottom-row {

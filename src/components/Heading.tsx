@@ -17,6 +17,11 @@ const HeadingStyle = styled.div<{ main: boolean }>`
     border-top : ${props => !props.main ? `1px dashed ${theme.grayBorderColor}` : 'none'};
     border-bottom : ${props => !props.main ? `3px solid ${theme.blackBorderColor}` : `1px dashed ${theme.grayBorderColor}`};
     color : ${props => !props.main ? theme.headingFrontPageColor : theme.headingMainColor};
+
+    @media (max-width:${`${theme.sm - 1}px`}) {
+        font-size : ${props => props.main ? '2.5rem' : '1.3rem'};
+
+    }
 `
 
 
