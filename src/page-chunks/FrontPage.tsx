@@ -3,19 +3,11 @@ import MediumArticleCard from '../components/MediumArticleCard';
 import leafPosts from '../util/leafPosts';
 import posts from '../util/posts';
 import theme from '../global/theme';
+import Heading from "../components/Heading";
+
 type Props = {}
 
-const Heading = styled.div`
-    font-weight : bold;
-    font-family : 'roboto-slab';
-    font-size : 1.8rem;
-    margin-bottom : 2.6rem;
-    padding-top : 0.625rem;
-    padding-bottom : 0.75rem;
-    border-top : 1px dashed ${theme.grayBorderColor};
-    border-bottom : 3px solid ${theme.blackBorderColor};
-    color : #969696;
-`
+
 
 const CardContainer = styled.div`
   display :grid;
@@ -23,10 +15,15 @@ const CardContainer = styled.div`
   grid-template-columns : 1fr 1fr;
   gap : 15px;
 `
+
+const Container = styled.div`
+  padding-bottom : 65px;  
+`
+
 export default function FrontPage(_props: Props) {
   const x = posts;
   return (
-    <>
+    <Container>
       <Heading>
         Articole recomandate
       </Heading>
@@ -36,6 +33,6 @@ export default function FrontPage(_props: Props) {
         <MediumArticleCard post={leafPosts[2]} />
         <MediumArticleCard post={leafPosts[0]} />
       </CardContainer>
-    </>
+    </Container>
   )
 }

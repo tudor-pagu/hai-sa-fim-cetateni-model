@@ -50,7 +50,7 @@ let nrOfRoots = 0;
 function parsePost(dir) {
     return fs.promises.readdir(dir)
         .then((val) => {
-            const url = "articole/" + cutPre(dir, 2);
+            const url = cutPre(dir, 2);
             const contentList = val
                 .filter((file) => path.extname(file) === '.md')
                 .map((file) => {
@@ -122,10 +122,18 @@ function resolveTree(tree) {
 
 function addAncestors(post, ancestors = []) {
     post.ancestors = ancestors;
+    if (post.kids.length > 0) {
+        post.url = 'categorii/'+post.url;
+    } else {
+        post.url = 'articole/'+post.url;
+    }
+    
     for (let i = 0; i < post.kids.length; i++) {
         addAncestors(post.kids[i], ancestors.concat(post.id));
     }
 }
+
+
 resolveTree(parsePost(postsRoot)).then((val) => {
     addAncestors(val);
     fs.writeFile('src/postsJSON.json', JSON.stringify(val), (err) => {

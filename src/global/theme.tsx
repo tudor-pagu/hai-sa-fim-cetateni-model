@@ -13,6 +13,8 @@ const theme = {
     coloredAccordionText:'#FFEFD8',
     blackBorderColor : '#262626',
     grayBorderColor : '#ababab',
+    footerBackground : '#3A3A3C',
+    footerTextColor : '#959595',
     heroImageFont: "droid-serif",
     logoFont : "roboto-slab",
     borderBottomAccordion: '2px dotted rgba(255,255,255,0.3)',
