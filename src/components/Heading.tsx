@@ -28,7 +28,11 @@ const HeadingStyle = styled.div<{ main: boolean }>`
 export default function Heading({ children, main = false }: Props) {
     return (
         <HeadingStyle main>
-            Categorie: {children}
+            {
+                main
+                ?<>Categorie: {children}</>
+                :children
+            }
         </HeadingStyle>
 
     )

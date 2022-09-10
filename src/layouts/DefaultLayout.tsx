@@ -19,7 +19,7 @@ const FlexContainer = styled.div`
   gap : 25px;
 `
 const Content = styled.div`
-  flex : 2.5;
+  flex : 2;
  // background-color : green;
 
 `
@@ -42,8 +42,8 @@ export default function DefaultValue({ children, hero }: Props) {
   return (
     <Container>
       <HeaderContainer>
-        <Header tabs={[{ text: 'Acasa', link: 'acasa' }, { text: 'Despre noi', link: 'despre-noi' },
-        { text: 'articole', link: 'articole' }, { text: 'stiri', link: 'stiri' }]}>
+        <Header tabs={[{ text: 'Acasa', link: '/' }, { text: 'Despre noi', link: '/despre-noi' },
+        { text: 'articole', link: '/articole' }]}>
           Hai Sa Fim Cetateni <span>Model</span>
         </Header>
       </HeaderContainer>

@@ -9,9 +9,8 @@ import getPostById from '../util/getPostById';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import MediumArticleCard from '../components/MediumArticleCard';
-import theme from "../global/theme";
-
-
+import theme from '../global/theme';
+import PostBody from '../components/PostBody';
 const StyledLink = styled(Link)`
   color : ${theme.linkHighlight};
 `
@@ -21,14 +20,9 @@ const PostsContainer = styled.div`
 
 export default function Category() {
     const params = useParams();
-    ///if keys is empty
-    let post:Post | undefined;
-    if (Object.keys(params).length === 0) {
-        post = getPostByUrl('categorii/');
-    } else {
-        post = getPostByUrl('categorii/' + params['*']);
-    }
-    if (post === undefined) {
+    const post = getPostByUrl('articole/' + params['*']);
+
+    if (post === undefined || post.content === null) {
         return (
             <DefaultLayout hero={<Heading main>
                 Postarea nu a fost gasita
@@ -42,10 +36,10 @@ export default function Category() {
         <DefaultLayout hero={<Heading main>
             {
                 post.content
-                ?post.content.metadata.title
-                :'Articole'
+                    ? post.content.metadata.title
+                    : 'Articole'
             }
-            
+
             <Breadcrumbs>
                 {
                     post.ancestors.slice(1).map((ancestor) => (
@@ -59,12 +53,7 @@ export default function Category() {
 
             </Breadcrumbs>
         </Heading>}>
-
-            <PostsContainer>
-                {
-                    post.kids.map((post) => <MediumArticleCard post={post} />)
-                }
-            </PostsContainer>
+            <PostBody post={post} />
         </DefaultLayout>
     )
 }

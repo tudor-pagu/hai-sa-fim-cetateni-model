@@ -19,6 +19,8 @@ const theme = {
     logoFont : "roboto-slab",
     headingFrontPageColor:'#969696',
     headingMainColor : '#BEBEBE',
+    postTitleColor : '#222222',
+    postContentColor : '#777777',
     borderBottomAccordion: '2px dotted rgba(255,255,255,0.3)',
     sm : 576,
     md : 768,

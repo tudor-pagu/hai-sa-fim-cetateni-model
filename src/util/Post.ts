@@ -1,10 +1,11 @@
 interface Content {
-    content:'string',
+    content:string,
     metadata: {
         title:string,
         featured: boolean,
         excerpt?: string,
         "featured image": string,
+        "featured image alt":string,
         timestamp: Date,
         author: string,
     },

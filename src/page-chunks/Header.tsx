@@ -14,6 +14,7 @@ import { Collapse } from "@nextui-org/react";
 import ListCategory from '../components/ListCategory';
 import ListItem from '../components/ListItem';
 import ArticleAccordion from '../components/ArticleAccordion';
+import { useLocation } from 'react-router-dom';
 
 interface Props {
   children: React.ReactNode;
@@ -60,7 +61,7 @@ const Tab = styled.div`
   padding : 20px 0px;
   background-color :white;
   transition : 0.3s;
-  :hover {
+  :hover,&.active {
     background-color : ${theme.linkHighlight};
     color : white;
     cursor: pointer;
@@ -125,15 +126,16 @@ function getTabStyle(index: number, tabs: {
   link: string;
 }[]) {
   if (index > 0 && index + 1 < tabs.length) {
-    return { borderLeft: '1px solid gray', borderRight: '1px solid gray', padding: '0px 20px' }
+    return { borderLeft: '0.5px solid gray', borderRight: '0.5px solid gray', padding: '0px 20px' }
   } else if (index === 0) {
-    return { borderRight: '1px solid gray', padding: '0px 20px' }
+    return { borderRight: '0.5px solid gray', padding: '0px 20px' }
   } else {
-    return { borderLeft: '1px solid gray', padding: '0px 20px' }
+    return { borderLeft: '0.5px solid gray', padding: '0px 20px' }
   }
 }
 export default function Header({ children, tabs }: Props) {
   const navigate = useNavigate();
+  const location = useLocation();
   const handleTabClick = (tab: { link: string }) => {
     navigate(tab.link);
   }
@@ -159,7 +161,7 @@ export default function Header({ children, tabs }: Props) {
                 <TabLine>
                   {
                     tabs.map((tab, index) => (
-                      <Tab onClick={handleTabClick.bind(null, tab)}>
+                      <Tab className={location.pathname===tab.link?'active':''} onClick={handleTabClick.bind(null, tab)}>
                         <span style={getTabStyle(index, tabs)}>
                           {
                             tab.text
