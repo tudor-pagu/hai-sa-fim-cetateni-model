@@ -148,9 +148,7 @@ function moveImagesToSrc(source, target) {
 
     if (fs.existsSync(target)) {
         fs.promises.readdir(source).then((dir) => {
-            console.log('dir=', dir);
             dir.forEach((file) => {
-                console.log('copying', source + '/' + file, target + '/' + file);
                 fs.promises.copyFile(source + '/' + file, target + '/' + file);
             })
         })

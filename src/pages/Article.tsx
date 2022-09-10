@@ -1,22 +1,18 @@
 import React from 'react'
 import DefaultLayout from "../layouts/DefaultLayout";
 import Heading from '../components/Heading';
-import Post from '../util/Post';
 import { useParams } from 'react-router-dom';
 import getPostByUrl from '../util/getPostByUrl';
 import { Breadcrumbs } from '@mui/material';
 import getPostById from '../util/getPostById';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import MediumArticleCard from '../components/MediumArticleCard';
 import theme from '../global/theme';
 import PostBody from '../components/PostBody';
 const StyledLink = styled(Link)`
   color : ${theme.linkHighlight};
 `
 
-const PostsContainer = styled.div`
-`
 
 export default function Category() {
     const params = useParams();

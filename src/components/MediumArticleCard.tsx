@@ -3,9 +3,8 @@ import Post from '../util/Post'
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import htmlToPlain from '../util/htmlToPlain';
-import { Breadcrumbs, Typography } from '@mui/material';
+import { Breadcrumbs} from '@mui/material';
 import { Link } from 'react-router-dom';
-import posts from '../util/posts';
 import getPostById from '../util/getPostById';
 import theme from '../global/theme';
 
