@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import styled from 'styled-components'
 import theme from '../global/theme';
-import {Input} from "@nextui-org/react";
+import { Input } from "@nextui-org/react";
 import Container from "../components/MyContainer"
 import { useNavigate } from 'react-router-dom';
 import UnstyledLink from '../components/UnstyledLink';
@@ -15,7 +15,7 @@ import ListCategory from '../components/ListCategory';
 import ListItem from '../components/ListItem';
 import ArticleAccordion from '../components/ArticleAccordion';
 import { useLocation } from 'react-router-dom';
-
+import YoutubeButton from '../components/YoutubeButton';
 interface Props {
   children: React.ReactNode;
   tabs: {
@@ -26,12 +26,15 @@ interface Props {
 
 const TopSocialBar = styled.div`
     background-color : ${theme.darkTopBlue};
-    height : 20px;
+    min-height : 22px;
+    padding : 2px;
+    display : flex;
+    justify-content : flex-end;
 `
 
 const MiddleBar = styled.div`
   background-color : ${theme.middleBlue};
-  min-height : 75px;
+  min-height : 85px;
   color : white;
   font-size : 2.2rem;
   font-weight : bold;
@@ -120,6 +123,11 @@ const SidebarContainer = styled.div`
 
 const FullContainer = styled.div`
 `
+const StyledYoutubeButton = styled(YoutubeButton)`
+  height : 20px;
+  width : 20px;
+  color : red;
+`
 
 function getTabStyle(index: number, tabs: {
   text: string;
@@ -146,22 +154,26 @@ export default function Header({ children, tabs }: Props) {
   return (
     <>
       <FullContainer>
-        <TopSocialBar></TopSocialBar>
+        <TopSocialBar>
+          <Container>
+           {/* <YoutubeButton color={theme.lighterGray} style={{ borderColor: 'rgba(0,0,0,0)', height: '20px', width: '20px' }} iconStyle={{ height: '20px', width: '20px' }} /> */}
+          </Container>
+        </TopSocialBar>
         <MiddleBar>
           <Container>
-            <UnstyledLink to='/' style={{fontFamily:theme.logoFont}}>
+            <UnstyledLink to='/' style={{ fontFamily: theme.logoFont }}>
               {children}
             </UnstyledLink>
           </Container>
         </MiddleBar>
         <BottomBar>
-          <Container style={{display:'flex',alignItems:'stretch'}}>
+          <Container style={{ display: 'flex', alignItems: 'stretch' }}>
             <Breakpoint customQuery={`(min-width:${theme.md}px)`}>
               <FlexContainer>
                 <TabLine>
                   {
                     tabs.map((tab, index) => (
-                      <Tab className={location.pathname===tab.link?'active':''} onClick={handleTabClick.bind(null, tab)}>
+                      <Tab className={location.pathname === tab.link ? 'active' : ''} onClick={handleTabClick.bind(null, tab)}>
                         <span style={getTabStyle(index, tabs)}>
                           {
                             tab.text
@@ -177,7 +189,7 @@ export default function Header({ children, tabs }: Props) {
             </Breakpoint>
             <Breakpoint customQuery={`(max-width:${theme.md - 1}px)`}>
               <HamburgerIcon onClick={toggleDrawer}>
-                <MenuIcon sx={{ height:'100%',color: 'white' }} />
+                <MenuIcon sx={{ height: '100%', color: 'white' }} />
               </HamburgerIcon>
               <Drawer anchor='right' open={isDrawerOpen} onClose={toggleDrawer}>
 
@@ -192,7 +204,7 @@ export default function Header({ children, tabs }: Props) {
                           ))
                         }
                       </ListCategory>
-                      <ArticleAccordion/>
+                      <ArticleAccordion />
                     </SidebarContainer>
 
                   }

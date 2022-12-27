@@ -21,9 +21,6 @@ const Container = styled.div`
 export default function FrontPage(_props: Props) {
   return (
     <Container>
-      <Heading>
-        Articole recomandate
-      </Heading>
       <CardContainer>
         <MediumArticleCard post={leafPosts[0]} />
         <MediumArticleCard post={leafPosts[1]} />

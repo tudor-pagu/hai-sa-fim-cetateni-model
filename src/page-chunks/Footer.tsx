@@ -86,7 +86,7 @@ export default function Footer() {
             <p>contact@gmail.com</p>
           </FlexContainer>
           <ShareContainer>
-            <YoutubeButton color={theme.footerTextColor} onClick={() => { window.location.replace('https://youtube.com') }} />
+            <YoutubeButton color={theme.footerTextColor} />
           </ShareContainer>
         </Container>
         <Container>

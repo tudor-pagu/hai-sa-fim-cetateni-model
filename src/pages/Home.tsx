@@ -6,7 +6,7 @@ import HeroImage from '../page-chunks/HeroImage';
 import flagsImage from '../img/flag2.jpg';
 import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
 import FrontPage from "../page-chunks/FrontPage";
-
+import Heading from '../components/Heading';
 
 const MainTagline = styled.div`
   font-family : ${theme.heroImageFont};
@@ -83,10 +83,14 @@ export default function Home() {
             Pe intelesul tuturor
           </Secondary>
         </Center>
+
+        <Heading>
+          Articole recomandate
+        </Heading>
       </HeroImage>
 
     }>
-      <FrontPage/>
+      <FrontPage />
     </DefaultLayout>
   )
 }
