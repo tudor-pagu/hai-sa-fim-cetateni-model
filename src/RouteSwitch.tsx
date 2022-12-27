@@ -3,10 +3,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from './pages/Home';
 import Category from './pages/Category';
 import Article from './pages/Article';
+import ScrollToTop from './components/ScrollToTop';
 
 function RouteSwitch() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/articole' element={<Category />} />
