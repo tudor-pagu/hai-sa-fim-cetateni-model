@@ -83,7 +83,7 @@ export default function Footer() {
           <h1>Contact</h1>
           <FlexContainer>
             <MailIcon style={{ color: 'white' }}></MailIcon>
-            <p>cetateni_model@gmail.com</p>
+            <p>cetateni_model_contact@gmail.com</p>
           </FlexContainer>
          { /*<ShareContainer>
             <YoutubeButton color={theme.footerTextColor} />

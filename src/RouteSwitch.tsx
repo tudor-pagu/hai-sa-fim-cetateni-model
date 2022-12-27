@@ -5,6 +5,7 @@ import Category from './pages/Category';
 import Article from './pages/Article';
 import ScrollToTop from './components/ScrollToTop';
 import DespreNoi from './pages/DespreNoi';
+import Search from './pages/Search';
 
 function RouteSwitch() {
   return (
@@ -16,6 +17,7 @@ function RouteSwitch() {
           <Route path='/categorii/*' element={<Category />} />
           <Route path='/articole/*' element={<Article />} />
           <Route path="/despre-noi" element={<DespreNoi />} />
+          <Route path="/cauta/*" element={<Search />} />
           <Route path='*' element={<h1>404 Pagina nu a fost gaista</h1>} />
         </Routes>
     </BrowserRouter>
