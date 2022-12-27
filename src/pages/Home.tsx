@@ -7,7 +7,9 @@ import flagsImage from '../img/flag2.jpg';
 import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
 import ArticleIcon from '@mui/icons-material/Article';
 import FrontPage from "../page-chunks/FrontPage";
+import CampaignIcon from '@mui/icons-material/Campaign';
 import Heading from '../components/Heading';
+import YouTubeIcon from '@mui/icons-material/YouTube';
 
 
 const MainTagline = styled.div`
@@ -59,17 +61,17 @@ const infoBoxes = [
   },
   {
     color: '#00C8A0',
-    mainText: 'Campaign',
-    subText: 'stuff',
-    renderIcon: ((props: any) => (<AccessAlarmIcon {...props}></AccessAlarmIcon>)),
-    link: '/2',
+    mainText: 'Interviuri',
+    subText: 'Cu persoane importante',
+    renderIcon: ((props: any) => (<CampaignIcon {...props}></CampaignIcon>)),
+    link: '/',
   },
   {
     color: '#FB6C6C',
-    mainText: 'Campaign',
-    subText: 'stuff',
-    renderIcon: ((props: any) => (<AccessAlarmIcon {...props}></AccessAlarmIcon>)),
-    link: '/3',
+    mainText: 'Canal de Youtube',
+    subText: 'Pentru videoclipuri detaliate',
+    renderIcon: ((props: any) => (<YouTubeIcon {...props}></YouTubeIcon>)),
+    link: '/',
   },
 ]
 export default function Home() {
