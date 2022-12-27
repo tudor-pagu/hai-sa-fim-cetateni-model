@@ -5,8 +5,10 @@ import theme from '../global/theme';
 import HeroImage from '../page-chunks/HeroImage';
 import flagsImage from '../img/flag2.jpg';
 import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
+import ArticleIcon from '@mui/icons-material/Article';
 import FrontPage from "../page-chunks/FrontPage";
 import Heading from '../components/Heading';
+
 
 const MainTagline = styled.div`
   font-family : ${theme.heroImageFont};
@@ -50,10 +52,10 @@ const Center = styled.div`
 const infoBoxes = [
   {
     color: '#00B5E2',
-    mainText: 'Campaign',
-    subText: 'stuff',
-    renderIcon: ((props: any) => (<AccessAlarmIcon {...props}></AccessAlarmIcon>)),
-    link: '/1',
+    mainText: 'Articole Informative',
+    subText: 'Afla tips and tricks folositoare',
+    renderIcon: ((props: any) => (<ArticleIcon {...props}></ArticleIcon>)),
+    link: '/articole',
   },
   {
     color: '#00C8A0',
@@ -84,9 +86,11 @@ export default function Home() {
           </Secondary>
         </Center>
 
+        {/*
         <Heading>
           Articole recomandate
         </Heading>
+    */}
       </HeroImage>
 
     }>
