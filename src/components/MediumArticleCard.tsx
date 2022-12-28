@@ -151,10 +151,10 @@ export default function MediumArticleCard({ post }: Props) {
          
         </Breadcrumbs>
         </div>
-        <div>
+        <div>{/*
           <span className='card-author'>
             De {post.content.metadata.author}
-          </span>
+          </span>*/}
         </div>
       </div>
     </Container>
