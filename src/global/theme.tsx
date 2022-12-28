@@ -20,7 +20,7 @@ const theme = {
     headingFrontPageColor:'#969696',
     headingMainColor : '#BEBEBE',
     postTitleColor : '#222222',
-    postContentColor : '#777777',
+    postContentColor : '#000000',
     borderBottomAccordion: '2px dotted rgba(255,255,255,0.3)',
     sm : 576,
     md : 768,
