@@ -52,7 +52,7 @@ const Center = styled.div`
 const infoBoxes = [
   {
     color: '#00B5E2',
-    mainText: 'Articole Informative',
+    mainText: 'Articole',
     subText: 'Afla tips and tricks folositoare',
     renderIcon: ((props: any) => (<ArticleIcon {...props}></ArticleIcon>)),
     link: '/articole',
@@ -66,7 +66,7 @@ const infoBoxes = [
   },
   {
     color: '#FB6C6C',
-    mainText: 'Canal de Youtube',
+    mainText: 'Youtube',
     subText: 'Pentru videoclipuri detaliate',
     renderIcon: ((props: any) => (<YouTubeIcon {...props}></YouTubeIcon>)),
     link: '/',

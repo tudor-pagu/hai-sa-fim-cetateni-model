@@ -39,6 +39,7 @@ const Overlay = styled.div`
 `
 
 const InfoBox = styled.div`
+    text-align: center;
     background-color: ${theme.infoBoxBackgroundColor};
     color: ${theme.infoBoxTextColor};
     flex : 1;
