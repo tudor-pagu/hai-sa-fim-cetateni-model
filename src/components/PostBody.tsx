@@ -17,6 +17,7 @@ const Container = styled.div`
         font-family : 'roboto-slab';
         color : ${theme.postContentColor};
         font-size : 1.2rem;
+        padding-bottom:75px;
     }
 `
 
