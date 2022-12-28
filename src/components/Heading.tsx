@@ -5,6 +5,7 @@ import theme from '../global/theme';
 type Props = {
     children?: React.ReactNode;
     main?: boolean;
+    beforeColonText?: string;
 }
 
 const HeadingStyle = styled.div<{ main: boolean }>`
@@ -25,12 +26,12 @@ const HeadingStyle = styled.div<{ main: boolean }>`
 `
 
 
-export default function Heading({ children, main = false }: Props) {
+export default function Heading({ children, main = false, beforeColonText }: Props) {
     return (
         <HeadingStyle main>
             {
                 main
-                ?<>Categorie: {children}</>
+                ?<>{beforeColonText||"Categorie"}: {children}</>
                 :children
             }
         </HeadingStyle>

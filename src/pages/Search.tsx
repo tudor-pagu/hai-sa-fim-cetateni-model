@@ -12,6 +12,7 @@ import MediumArticleCard from '../components/MediumArticleCard';
 import theme from "../global/theme";
 import posts from '../util/posts';
 import leafPosts from '../util/leafPosts';
+import lunr from "lunr";
 
 const StyledLink = styled(Link)`
   color : ${theme.linkHighlight};
@@ -21,45 +22,45 @@ const PostsContainer = styled.div`
 `
 
 
-function getRelevantPosts(searchTerm:String) {
-    const x = leafPosts;
-    return;
+function getRelevantPosts(searchTerm:string) {
+    const idx = lunr(function() {
+        this.field('title');
+        this.field('body');
+
+        leafPosts.forEach((post,index) => {
+            this.add({
+                title: post.content?.metadata.title || "",
+                body : post.content?.content || "",
+                postId : post.id,
+                id:index,
+            })
+        });
+    });
+
+    const posts = idx.search(searchTerm).slice(0,8).map((post)=>leafPosts[Number(post.ref)]);
+    return posts;
 }
 
 export default function Search() {
     const params = useParams();
     ///if keys is empty
     const searchTerm = params['*'];
-    const relevantPosts = getRelevantPosts(searchTerm?searchTerm:"");
+    const posts = getRelevantPosts(searchTerm?searchTerm:"");
 
     //TODO: Test the breadcrumbs
 
-    return null;
-   /* return (
-        <DefaultLayout hero={<Heading main>
+    return (
+        <DefaultLayout hero={<Heading main beforeColonText="Cautare">
             {
                 searchTerm
             }
-            
-            <Breadcrumbs>
-                {
-                    post.ancestors.slice(1).map((ancestor) => (
-                        <StyledLink to={getPostById(ancestor).url} >
-                            {
-                                getPostById(ancestor).content!.metadata.title
-                            }
-                        </StyledLink>
-                    ))
-                }
-
-            </Breadcrumbs>
         </Heading>}>
 
             <PostsContainer>
                 {
-                    post.kids.map((post) => <MediumArticleCard post={post} />)
+                    posts.map((post) => <MediumArticleCard post={post} />)
                 }
             </PostsContainer>
         </DefaultLayout>
-    )*/
+    )
 }

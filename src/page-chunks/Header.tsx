@@ -16,6 +16,8 @@ import ListItem from '../components/ListItem';
 import ArticleAccordion from '../components/ArticleAccordion';
 import { useLocation } from 'react-router-dom';
 import YoutubeButton from '../components/YoutubeButton';
+import SearchBar from "../components/SearchBar";
+
 interface Props {
   children: React.ReactNode;
   tabs: {
@@ -183,8 +185,7 @@ export default function Header({ children, tabs }: Props) {
                     ))
                   }
                 </TabLine>
-                <Input placeholder='Cauta...' contentRight={<SearchIcon sx={{ color: '#003C54' }} />}>
-                </Input>
+                  <SearchBar />
               </FlexContainer>
             </Breakpoint>
             <Breakpoint customQuery={`(max-width:${theme.md - 1}px)`}>
