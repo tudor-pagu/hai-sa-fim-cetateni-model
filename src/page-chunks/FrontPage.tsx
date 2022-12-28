@@ -17,14 +17,22 @@ const Container = styled.div`
   padding-bottom : 65px;  
 `
 
+function shuffleArray(v:any[]) {
+  let clone = v.filter(()=>true);
+  return clone
+    .map(value=>({value:value, sort: Math.random()}))  
+    .sort((a,b) => a.sort - b.sort)
+    .map(({value}) => value);
+}
 export default function FrontPage(_props: Props) {
+  const featuredPosts = shuffleArray(leafPosts);
   return (
     <Container>
       <CardContainer>
-        <MediumArticleCard post={leafPosts[0]} />
-        <MediumArticleCard post={leafPosts[1]} />
-        <MediumArticleCard post={leafPosts[2]} />
-        <MediumArticleCard post={leafPosts[0]} />
+        <MediumArticleCard post={featuredPosts[0]} />
+        <MediumArticleCard post={featuredPosts[1]} />
+        <MediumArticleCard post={featuredPosts[2]} />
+        <MediumArticleCard post={featuredPosts[0]} />
       </CardContainer>
     </Container>
   )
