@@ -16,7 +16,7 @@ const Container = styled.div`
     .post-content {
         font-family : 'roboto-slab';
         color : ${theme.postContentColor};
-        font-size : 1.2rem;
+        font-size : 1.35rem;
         padding-bottom:75px;
     }
 `
