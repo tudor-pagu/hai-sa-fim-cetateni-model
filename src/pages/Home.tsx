@@ -52,7 +52,7 @@ const Center = styled.div`
 const infoBoxes = [
   {
     color: '#00B5E2',
-    mainText: 'Articole',
+    mainText: 'Articles',
     subText: 'Afla tips and tricks folositoare',
     renderIcon: ((props: any) => (<ArticleIcon {...props}></ArticleIcon>)),
     link: '/articole',
