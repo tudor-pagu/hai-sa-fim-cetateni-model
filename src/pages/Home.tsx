@@ -4,11 +4,9 @@ import styled from 'styled-components';
 import theme from '../global/theme';
 import HeroImage from '../page-chunks/HeroImage';
 import flagsImage from '../img/flag2.jpg';
-import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
 import ArticleIcon from '@mui/icons-material/Article';
 import FrontPage from "../page-chunks/FrontPage";
 import CampaignIcon from '@mui/icons-material/Campaign';
-import Heading from '../components/Heading';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 
 

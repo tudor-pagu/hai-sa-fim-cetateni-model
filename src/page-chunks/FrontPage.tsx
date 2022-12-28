@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import MediumArticleCard from '../components/MediumArticleCard';
 import leafPosts from '../util/leafPosts';
-import Heading from "../components/Heading";
 
 type Props = {}
 

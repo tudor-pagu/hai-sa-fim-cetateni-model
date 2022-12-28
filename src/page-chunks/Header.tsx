@@ -2,11 +2,9 @@ import React from 'react'
 import { useState } from 'react';
 import styled from 'styled-components'
 import theme from '../global/theme';
-import { Input } from "@nextui-org/react";
 import Container from "../components/MyContainer"
 import { useNavigate } from 'react-router-dom';
 import UnstyledLink from '../components/UnstyledLink';
-import SearchIcon from '@mui/icons-material/Search';
 import { Breakpoint } from 'react-socks';
 import MenuIcon from '@mui/icons-material/Menu';
 import Drawer from '@mui/material/Drawer';
@@ -15,7 +13,6 @@ import ListCategory from '../components/ListCategory';
 import ListItem from '../components/ListItem';
 import ArticleAccordion from '../components/ArticleAccordion';
 import { useLocation } from 'react-router-dom';
-import YoutubeButton from '../components/YoutubeButton';
 import SearchBar from "../components/SearchBar";
 
 interface Props {
@@ -125,12 +122,13 @@ const SidebarContainer = styled.div`
 
 const FullContainer = styled.div`
 `
+/*
 const StyledYoutubeButton = styled(YoutubeButton)`
   height : 20px;
   width : 20px;
   color : red;
 `
-
+*/
 function getTabStyle(index: number, tabs: {
   text: string;
   link: string;

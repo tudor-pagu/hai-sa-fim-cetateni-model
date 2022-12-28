@@ -4,9 +4,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import { useNavigate } from "react-router-dom";
 import { ChangeEvent } from "react";
 import { FormElement } from "@nextui-org/react";
-type Props = {
-  // Declare the component's props here
-};
 
 const SearchBar = () => {
   const [value,setValue] = useState('');

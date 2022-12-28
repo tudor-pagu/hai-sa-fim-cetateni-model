@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
 import MailIcon from '@mui/icons-material/Mail';
-import YoutubeButton from '../components/YoutubeButton';
 import theme from '../global/theme';
 
 const FooterContainer = styled.div`
@@ -64,8 +63,6 @@ const FlexContainer = styled.div`
     display : flex;
     flex-wrap : wrap;
     gap : 4px;
-`
-const ShareContainer = styled.div`
 `
 
 
