@@ -22,7 +22,7 @@ const StyledContainer = styled.div`
     }
 `
 
-
+/*
 const ProfileHolder = styled.div`
     display : flex;
     flex-direction : column;
@@ -40,6 +40,7 @@ const Team = styled.div`
     display : flex;
     margin-bottom : 20px;
 `
+*/
 export default function DespreNoi() {
     return (
         <DefaultLayout hero={<Heading>Despre noi</Heading>}>
