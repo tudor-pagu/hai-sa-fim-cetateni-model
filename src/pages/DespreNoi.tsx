@@ -11,6 +11,7 @@ const StyledContainer = styled.div`
     flex-direction : column;  
     font-size : 3rem;  
     align-items : center;
+    padding-bottom:75px;
     h1 {
         border-bottom : 3px solid ${theme.darkTopBlue};
         padding-bottom : 10px;
@@ -47,7 +48,7 @@ export default function DespreNoi() {
             <Container maxWidth='md'>
                 <StyledContainer>
                     <h1>Scopul nostru</h1>
-                    <p>Suntem un grup de elevi care doresc sa aduca schimbare in tara noastra prin promovarea educatiei civice. Scopul nostru este sa impartasim informatii si resurse extrem de importante pentru traitul in aceasta tara si sa crestem implicarea societala a tinerilor prin activitati cum ar fi vizite la parlament.</p>
+                    <p>Suntem un grup de elevi care doresc sa aduca schimbare in tara noastra prin promovarea educatiei civice. Scopul nostru este sa impartasim informatii si resurse extrem de importante pentru traitul in aceasta tara si sa crestem implicarea societala a tinerilor prin activitati cum ar fi vizite la parlament, colaborari cu alte organizatii de tineret, si organizarea clubului de educatie civicaa "Tips and Trick for Smart Citizens".</p>
                    { /*<h1>Echipa</h1>
                     <Team>
                         <ProfileHolder>
